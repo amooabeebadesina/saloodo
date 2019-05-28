@@ -11,20 +11,19 @@
 |
 */
 
+
+/** @var TYPE_NAME $router */
+
 $router->get('/', function () use ($router) {
     echo "You lost you way?";
 });
 
 $router->group(['prefix' => 'v1'], function () use ($router) {
 
-    $router->post('login', 'AuthController@authenticate');
-    $router->post('register', 'AuthController@register');
-    $router->post('merchant-requests', 'MerchantController@merchantRequest');
-    $router->get('ping', 'GeneralController@index');
-    $router->get('user', 'UserController@getUser');
+    $router->get('ping', 'UtilityController@ping');
 
     $router->group(['middleware' => 'jwt-auth'], function () use ($router) {
-        $router->get('token/{data}', 'UserController@verifyUser');
+
 
     });
 });
