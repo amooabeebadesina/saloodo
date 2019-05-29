@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use AndreasPabst\RequestValidation\RequestAbstract;
 
-class CreateProductRequest extends RequestAbstract
+class CreateBundleRequest extends RequestAbstract
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,9 @@ class CreateProductRequest extends RequestAbstract
         return [
             'name' => 'required|max:255',
             'description' => 'required|max:2000',
-            'price' => 'required'
+            'price' => 'required',
+            'products' => 'required|array',
+            'products.*.id' => 'required|numeric',
         ];
     }
 

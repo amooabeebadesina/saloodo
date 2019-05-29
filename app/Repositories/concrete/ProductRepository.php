@@ -21,11 +21,18 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function getAll()
     {
-        return $this->product->paginate(20);
+        return $this->product->with('products')->paginate(20);
     }
 
     public function update($id, $data)
     {
         return $this->product->where('id', $id)->update($data);
+    }
+
+    public function createBundle($data)
+    {
+        $bundle = $this->product->create($data);
+        $bundle->products()->attach($data['products']);
+        return $bundle;
     }
 }

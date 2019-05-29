@@ -18,4 +18,14 @@ class Product extends BaseModel
         'name', 'price', 'discount', 'description'
     ];
 
+    public function bundles()
+    {
+        return $this->belongsToMany(Product::class, 'bundle_product', 'product_id', 'bundle_id');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'bundle_product', 'bundle_id', 'product_id');
+    }
+
 }

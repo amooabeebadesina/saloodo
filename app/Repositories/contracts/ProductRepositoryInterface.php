@@ -12,4 +12,6 @@ interface ProductRepositoryInterface
     public function getAll();
 
     public function update($id, $data);
+
+    public function createBundle($data);
 }

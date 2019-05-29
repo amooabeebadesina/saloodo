@@ -32,6 +32,8 @@ $router->group(['middleware' => 'jwt-auth'], function () use ($router) {
     $router->group(['middleware' => 'admin'], function () use ($router) {
         // Enable Admin to create new product
         $router->post('/products', 'ProductController@create');
+        // Enable Admin to create new bundles
+        $router->post('/bundles', 'ProductController@createBundle');
         // Enable Admin to update product prices and discount
         $router->put('/products/{id}', 'ProductController@update');
     });

@@ -16,4 +16,13 @@ class OrderUtil
         }
         return $amount;
     }
+
+    public static function stripProductIds($products)
+    {
+        $ids = [];
+        foreach ($products as $product) {
+            array_push($ids,  $product['id']);
+        }
+        return $ids;
+    }
 }

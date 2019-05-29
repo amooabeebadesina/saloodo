@@ -8,6 +8,7 @@ class Error
     const AUTH = 'Invalid Credentials';
 
     const PRODUCT_CREATE_ERROR = 'Unable to create product';
+    const BUNDLE_CREATE_ERROR = 'Unable to create bundle';
 
     const ORDER_CREATE = 'Unable to create order';
 

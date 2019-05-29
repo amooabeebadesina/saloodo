@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 
 
+use App\Http\Requests\CreateBundleRequest;
 use App\Http\Requests\CreateProductRequest;
 use App\Repositories\contracts\ProductRepositoryInterface;
 use App\Utils\Error;
+use App\Utils\OrderUtil;
+use Exception;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -27,7 +30,27 @@ class ProductController extends Controller
                 return $this->sendErrorResponse(Error::PRODUCT_CREATE_ERROR, null);
             }
             return $this->sendSuccessResponse($product);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
+            return $this->sendFatalErrorResponse($e);
+        }
+    }
+
+    public function createBundle(CreateBundleRequest $request)
+    {
+        try {
+            $data = [
+                'price' => $request->price,
+                'name' => $request->name,
+                'description' => $request->description,
+                'products' => OrderUtil::stripProductIds($request->products)
+            ];
+            $product = $this->productRepo->createBundle($data);
+            if (!$product) {
+                return $this->sendErrorResponse(Error::BUNDLE_CREATE_ERROR, null);
+            }
+            return $this->sendSuccessResponse($product);
+        } catch (Exception $e) {
+            var_dump($e);
             return $this->sendFatalErrorResponse($e);
         }
     }
@@ -37,7 +60,7 @@ class ProductController extends Controller
         try {
             $products = $this->productRepo->getAll();
             return $this->sendSuccessResponse($products);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->sendFatalErrorResponse($e);
         }
     }
@@ -50,7 +73,7 @@ class ProductController extends Controller
                 return $this->sendErrorResponse(Error::PRODUCT_CREATE_ERROR, null);
             }
             return $this->sendSuccessResponse($product);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->sendFatalErrorResponse($e);
         }
     }

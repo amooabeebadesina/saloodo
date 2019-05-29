@@ -38,7 +38,6 @@ class OrderController extends Controller
             }
             return $this->sendSuccessResponse($order);
         } catch (Exception $e) {
-            var_dump($e->getMessage());
             return $this->sendFatalErrorResponse($e);
         }
 
