@@ -25,7 +25,9 @@ $router->post('/login', 'UserController@login');
 
 $router->group(['middleware' => 'jwt-auth'], function () use ($router) {
 
-    $router->post('/orders', 'UserController@createCustomerOrder');
+    $router->get('/orders', 'OrderController@getOrders');
+
+    $router->post('/orders', 'OrderController@createCustomerOrder');
 
     $router->group(['middleware' => 'admin'], function () use ($router) {
         // Enable Admin to create new product

@@ -8,6 +8,10 @@ class Order extends BaseModel
         'user_id', 'amount', 'coupon', 'status', 'shipping_address', 'notes'
     ];
 
+    protected $hidden = [
+        'user_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -15,6 +19,6 @@ class Order extends BaseModel
 
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 }

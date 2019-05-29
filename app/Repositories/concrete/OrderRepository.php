@@ -19,7 +19,19 @@ class OrderRepository implements OrderRepositoryInterface
     public function create($data)
     {
         $order = $this->order->create($data);
-        $order->products()->attach($data['products']);
+        foreach ($data['products'] as $product) {
+            $order->products()->attach($product['id'], ['quantity' => $product['quantity']]);
+        }
         return $order;
+    }
+
+    public function getAllOrders()
+    {
+       return $this->order->with('products', 'user')->paginate(20);
+    }
+
+    public function getCustomerOrders($customerId)
+    {
+        return $this->order->where('user_id', $customerId)->with('products', 'user')->paginate(20);
     }
 }

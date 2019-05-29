@@ -26,7 +26,9 @@ class CreateOrderRequest extends RequestAbstract
         return [
             'products' => 'required|array',
             'shipping_address' => 'required',
-            'products.*.id' => 'required|numeric'
+            'products.*.id' => 'required|numeric',
+            'products.*.price' => 'required|numeric',
+            'products.*.quantity' => 'required|numeric'
         ];
     }
 

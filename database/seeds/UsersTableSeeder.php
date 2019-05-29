@@ -20,5 +20,13 @@ class UsersTableSeeder extends Seeder
         $user->first_name = 'John';
         $user->last_name = 'Doe';
         $user->save();
+
+        $user = new User();
+        $user->email = 'customer@saloodo.com';
+        $user->password = Hash::make('demo123');
+        $user->role = 'customer';
+        $user->first_name = 'Customer';
+        $user->last_name = 'Rose';
+        $user->save();
     }
 }
