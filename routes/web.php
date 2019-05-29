@@ -17,13 +17,10 @@
 $router->get('/', function () use ($router) {
     echo "You lost you way?";
 });
+$router->get('ping', 'UtilityController@ping');
 
-$router->group(['prefix' => 'v1'], function () use ($router) {
+$router->group(['middleware' => 'jwt-auth'], function () use ($router) {
 
-    $router->get('ping', 'UtilityController@ping');
+    $router->post('/products', 'ProductController@create');
 
-    $router->group(['middleware' => 'jwt-auth'], function () use ($router) {
-
-
-    });
 });

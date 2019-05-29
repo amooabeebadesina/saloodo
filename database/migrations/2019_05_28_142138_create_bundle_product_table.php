@@ -14,7 +14,7 @@ class CreateBundleProductTable extends Migration
     public function up()
     {
         Schema::create('bundle_product', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->unsignedInteger('bundle_id')->index();
             $table->foreign('bundle_id')->references('id')->on('products')->onDelete('cascade');
             $table->unsignedInteger('product_id')->index();
