@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fa8f698d1f7ef84083cfa5df423831a",
+    "content-hash": "78854de364adfa9da64ef2b3f46d13e8",
     "packages": [
+        {
+            "name": "andreaspabst/lumen-request-validation",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreaspabst/lumen-request-validation.git",
+                "reference": "35352e2736fd41da53f5eafaca5f53e57adda858"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreaspabst/lumen-request-validation/zipball/35352e2736fd41da53f5eafaca5f53e57adda858",
+                "reference": "35352e2736fd41da53f5eafaca5f53e57adda858",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.4",
+                "laravel/lumen-framework": ">=5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AndreasPabst\\RequestValidation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Pabst",
+                    "email": "management@andreaspabst.com"
+                }
+            ],
+            "description": "Adds the Laravel ability to separate validations from the controller",
+            "keywords": [
+                "form-request",
+                "laravel-form-request",
+                "lumen",
+                "lumen-form-request",
+                "lumen-package",
+                "lumen-request-validate",
+                "validation"
+            ],
+            "time": "2019-03-17T16:53:49+00:00"
+        },
         {
             "name": "doctrine/cache",
             "version": "v1.8.0",

@@ -18,9 +18,7 @@ services:
       - ./:/var/www
     links:
       - database
-    environment:
-      - "DB_PORT=3306"
-      - "DB_HOST=${DB_HOST}"
+    env_file: .env
   database:
     image: mysql:5.6
     environment:

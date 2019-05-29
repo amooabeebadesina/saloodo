@@ -18,9 +18,12 @@ $router->get('/', function () use ($router) {
     echo "You lost you way?";
 });
 $router->get('ping', 'UtilityController@ping');
+$router->post('login', 'UserController@login');
 
 $router->group(['middleware' => 'jwt-auth'], function () use ($router) {
 
-    $router->post('/products', 'ProductController@create');
+    $router->group(['middleware' => 'admin'], function () use ($router) {
+        $router->post('/products', 'ProductController@create');
+    });
 
 });

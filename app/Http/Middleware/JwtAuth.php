@@ -20,7 +20,7 @@ class JwtAuth
             return $this->sendErrorResponse($msg, null, 401);
         }
         try {
-            $decoded = JWT::decode($token, env('JWT_SECRET'), array('HS512')) ;
+            $decoded = JWT::decode($token, env('JWT_SECRET'), array('HS512'));
             $request->auth = $decoded->sub;
             return $next($request);
         } catch(ExpiredException $e) {
