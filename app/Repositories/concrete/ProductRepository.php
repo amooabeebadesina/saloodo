@@ -23,4 +23,9 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return $this->product->paginate(20);
     }
+
+    public function update($id, $data)
+    {
+        return $this->product->where('id', $id)->update($data);
+    }
 }

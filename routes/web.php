@@ -18,14 +18,20 @@ $router->get('/', function () use ($router) {
     echo "You lost you way?";
 });
 $router->get('/ping', 'UtilityController@ping');
+// Fetch products and their prices
 $router->get('/products', 'ProductController@getAll');
 
 $router->post('/login', 'UserController@login');
 
 $router->group(['middleware' => 'jwt-auth'], function () use ($router) {
 
+    $router->post('/orders', 'UserController@createCustomerOrder');
+
     $router->group(['middleware' => 'admin'], function () use ($router) {
+        // Enable Admin to create new product
         $router->post('/products', 'ProductController@create');
+        // Enable Admin to update product prices and discount
+        $router->put('/products/{id}', 'ProductController@update');
     });
 
 });

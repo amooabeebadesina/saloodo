@@ -41,4 +41,17 @@ class ProductController extends Controller
             return $this->sendFatalErrorResponse($e);
         }
     }
+
+    public function update(CreateProductRequest $request, $id)
+    {
+        try {
+            $product = $this->productRepo->update($id, $request->all());
+            if (!$product) {
+                return $this->sendErrorResponse(Error::PRODUCT_CREATE_ERROR, null);
+            }
+            return $this->sendSuccessResponse($product);
+        } catch (\Exception $e) {
+            return $this->sendFatalErrorResponse($e);
+        }
+    }
 }

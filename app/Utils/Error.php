@@ -9,5 +9,7 @@ class Error
 
     const PRODUCT_CREATE_ERROR = 'Unable to create product';
 
+    const ORDER_CREATE = 'Unable to create order';
+
     const FATAL = 'Something went wrong';
 }
